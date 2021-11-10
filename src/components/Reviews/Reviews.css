@@ -1,0 +1,29 @@
+.slider-h {
+  height: 500px;
+}
+.q-color {
+  color: #ffd9d0;
+}
+.headers-title {
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+  font-family: "Niconne", cursive;
+}
+.headers-title:after {
+  content: "";
+  background: url(../../images/bottom.png) repeat-x;
+  display: block;
+  width: 55px;
+  height: 15px;
+  margin: 0 auto 31px;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: #ca6e56;
+}
+@media only screen and (max-width: 600px) {
+  .slider-h {
+    height: 76px;
+  }
+}

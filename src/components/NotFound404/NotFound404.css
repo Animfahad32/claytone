@@ -1,0 +1,9 @@
+.notfound {
+  text-align: center;
+}
+.notfoundtext h2 {
+  color: #ffe9e2;
+}
+.notfoundtext {
+  padding: 40px;
+}

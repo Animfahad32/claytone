@@ -1,0 +1,41 @@
+.carousel-caption {
+  bottom: 30%;
+}
+
+.slider-header {
+  font-size: 72px;
+  color: #333333;
+}
+
+.slider-paragraph {
+  font-size: 16px;
+  color: #333333;
+}
+
+.slide-btn {
+  padding: 12px 35px;
+  font-weight: 600;
+  background-color: #333333;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: #fff;
+}
+.slide-btn:hover {
+  background-color: #fc4c4b;
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .slider-header {
+    font-size: 10px;
+  }
+  .slider-paragraph {
+    font-size: 5px;
+  }
+  .carousel-caption {
+    top: -5%;
+  }
+  .slide-btn {
+    padding: 5px 25px;
+  }
+}

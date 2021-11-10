@@ -1,0 +1,19 @@
+.product-btn {
+  background: 0 0;
+  color: #000;
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 35px;
+}
+.product-btn:hover {
+  background-color: #ffe9e3;
+
+  border-color: #ffe9e2;
+  transition: 0.5s;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 600;
+}

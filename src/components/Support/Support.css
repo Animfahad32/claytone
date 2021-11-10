@@ -1,0 +1,20 @@
+.padding-support {
+  padding: 60px;
+  background: #fcf8f7;
+}
+.card-support {
+  padding: 25px 25px 25px 45px;
+  background: #ffe9e2;
+}
+
+.items-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

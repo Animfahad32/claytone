@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import AllProducts from './components/AllProducts/AllProducts';
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login/Login';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';

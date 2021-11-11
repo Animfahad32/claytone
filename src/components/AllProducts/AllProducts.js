@@ -7,7 +7,7 @@ const AllProducts = () => {
     const [allProducts, setAllProducts] = useState([])
 
     useEffect(() => {
-        fetch('https://animfahad32.github.io/fakeData/clayproducts.json')
+        fetch('http://localhost:5000/products')
         .then(res => res.json())
         .then(data => setAllProducts(data))
     },[])
@@ -24,7 +24,7 @@ const AllProducts = () => {
        <div className="row">
         {
             allProducts.map(allProduct =>
-                <div key={allProduct.id} className="col-md-4">
+                <div key={allProduct?._id} className="col-md-4">
                     <div className="card mt-3">
                     <img src={allProduct?.img} className="card-img-top" alt="..."/>
                     <div className="card-body">

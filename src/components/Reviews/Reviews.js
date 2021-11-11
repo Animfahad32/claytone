@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
+import StarRatings from 'react-star-ratings';
 import reviewbg from '../../images/review-bg.jpg';
 import './Reviews.css';
 const Reviews = () => {
@@ -8,9 +9,10 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('https://animfahad32.github.io/fakeData/reviews.json')
+        fetch('http://localhost:5000/addreviews')
         .then(res => res.json())
         .then(data => setReviews(data))
+        
     },[])
     return (
         <>
@@ -22,7 +24,7 @@ const Reviews = () => {
 
        {
            reviews.map(review =>
-            <Carousel.Item key={review.id} className="slider-h">
+            <Carousel.Item key={review?._id} className="slider-h">
                   <img
               className="d-block w-100"
               src={reviewbg}
@@ -31,6 +33,12 @@ const Reviews = () => {
             <Carousel.Caption className="carousel-caption">
             <Fade bottom>
               <h2 className="slider-header">{review?.name} </h2>
+              <StarRatings
+              className="ratings-icon"
+        rating={parseInt(review?.rating)}
+        starDimension="20px"
+        starSpacing="10px"
+      />
                <p className="slider-paragraph"><i className="fas fa-quote-left q-color"></i> {review?.text} <i className="fas fa-quote-right q-color"></i></p> 
               
               </Fade>

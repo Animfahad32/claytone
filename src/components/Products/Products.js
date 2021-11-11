@@ -9,6 +9,7 @@ const Products = () => {
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])
+    
     return (
         <div id="products">
         <div className="container mt-5">
@@ -27,7 +28,9 @@ const Products = () => {
                     <h5 className="card-title">{product?.name}</h5>
                     <p className="card-text">{product?.material}</p>
                     <p className="card-text price">$ {product?.price}</p>
+                    <Link to={`/purchase/${product?.id}`}>
                     <button className="btn product-btn">BUY NOW</button>
+                    </Link>
                     </div>
                 
                 </div>

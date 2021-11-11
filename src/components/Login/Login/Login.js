@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Footer from '../../Footer/Footer';
 import Navigation from '../../Navigation/Navigation';
@@ -9,6 +9,11 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState({})
     const {loginUser,  authError, isLoading} = useAuth()
+    const location = useLocation();
+    const history = useHistory()
+
+
+
     const handleOnChange = (e) => {
         const field = e.target.name
         const value = e.target.value
@@ -18,7 +23,7 @@ const Login = () => {
         console.log(loginData)
     }
     const handleLogin = e => {
-        loginUser(loginData.email, loginData.password)
+        loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault();
        
      }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import Footer from '../../Footer/Footer';
@@ -12,13 +12,15 @@ const Register = () => {
     
     
     const [loginData, setLoginData] = useState({})
+    const history = useHistory()
     const {registerUser, isLoading, user, authError} = useAuth()
   
-    const handleOnChange = (e) => {
+    const handleOnBlur = (e) => {
         const field = e.target.name
         const value = e.target.value
         const newLoginData = {...loginData}
         newLoginData[field] = value
+        console.log(newLoginData)
         setLoginData(newLoginData)
        
     }
@@ -32,7 +34,7 @@ const Register = () => {
               })
            
         }
-        registerUser(loginData.email, loginData.password)
+        registerUser(loginData.email, loginData.password, loginData.name, history)
         e.preventDefault();
        
      }
@@ -49,9 +51,10 @@ const Register = () => {
         <div className="form-div mt-5 mb-5">
         {
             !isLoading &&  <form onSubmit={handleLogin}>
-            <input className="form-div-input" type="email" placeholder="Email" name="email" onChange={handleOnChange}/>
-            <input className="form-div-input" type="password" placeholder="password" name="password" onChange={handleOnChange} />
-            <input className="form-div-input" type="password" placeholder="Confirm password" name="password2" onChange={handleOnChange} />
+            <input className="form-div-input" type="text" placeholder="Name" name="name" onBlur={handleOnBlur}/>
+            <input className="form-div-input" type="email" placeholder="Email" name="email" onBlur={handleOnBlur}/>
+            <input className="form-div-input" type="password" placeholder="password" name="password" onBlur={handleOnBlur} />
+            <input className="form-div-input" type="password" placeholder="Confirm password" name="password2" onBlur={handleOnBlur} />
             <button className="form-btn" type="submit">Create an account</button>
             </form>
         }

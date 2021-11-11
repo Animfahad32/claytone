@@ -22,9 +22,26 @@
   text-decoration: none;
   font-weight: 700;
 }
+.logs-style {
+  display: flex;
+}
+.logoutbtn {
+  border: none;
+  background: #ffe9e3;
+  color: #111;
+  font-size: 18px;
+  border-radius: 0;
+  font-weight: 500;
+}
+.logoutbtn:hover {
+  color: #ca6e56;
+}
 
 @media only screen and (max-width: 600px) {
   .nav-hov {
     padding: 10px 10px;
+  }
+  .logs-style {
+    display: inline-block;
   }
 }

@@ -1,13 +1,27 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import Footer from '../../Footer/Footer';
 import Navigation from '../../Navigation/Navigation';
 import './Login.css';
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+
+    const [loginData, setLoginData] = useState({})
+    const {loginUser,  authError, isLoading} = useAuth()
+    const handleOnChange = (e) => {
+        const field = e.target.name
+        const value = e.target.value
+        const newLoginData = {...loginData}
+        newLoginData[field] = value
+        setLoginData(newLoginData)
+        console.log(loginData)
+    }
+    const handleLogin = e => {
+        loginUser(loginData.email, loginData.password)
+        e.preventDefault();
+       
+     }
     return (
      <>
      <Navigation></Navigation>
@@ -19,12 +33,26 @@ const Login = () => {
         </div>
         </div>
         <div className="form-div mt-5 mb-5">
-           <form onSubmit={handleSubmit(onSubmit)}>
-            <input  className="form-div-input " {...register("email", { required: true, maxLength: 20 })} placeholder="Email" />
-            <input  className="form-div-input " {...register("password", { required: true, maxLength: 20 })} placeholder="Password" />
-            
-            <input className="form-btn" type="submit" />
+        {!isLoading && 
+            <form onSubmit={handleLogin}>
+            <input className="form-div-input" type="email" placeholder="Email" name="email" onChange={handleOnChange}/>
+            <input className="form-div-input" type="password" placeholder="password" name="password" onChange={handleOnChange} />
+            <button className="form-btn" type="submit">Login</button>
             </form>
+        
+        }
+
+        {isLoading && <div className="text-center">
+            
+            <div className="spinner-border spinner-color" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+            </div>}
+            {authError && <div className="container mt-3">
+            <div class="alert alert-clr" role="alert">
+                {authError}
+                </div>
+            </div>  }
             <div className="text-center mt-3">
                 <Link to="/register" className="text-decoration-none"><p className="create-style">Create account</p></Link>
             </div>

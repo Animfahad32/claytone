@@ -39,7 +39,12 @@ const AllProducts = () => {
                 
                 )
        }
+
+       <div>
+          
+       </div>
      </div>
+     
        </div>
        <Footer></Footer>
        </>

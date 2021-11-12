@@ -18,6 +18,7 @@ import AddProducts from '../AddProducts/AddProducts';
 import AddReviews from '../AddReviews/AddReviews';
 import AllOrders from '../AllOrders/AllOrders';
 import ManageAllProducts from '../ManageAllProducts/ManageAllProducts';
+import MyOrders from '../MyOrders/MyOrders';
 import Payment from '../Payment/Payment';
 import './Dashboard.css';
 
@@ -55,29 +56,10 @@ function Dashboard(props) {
     <Divider/>
     <Link to={`${url}/payment`}> <button className="dashbtn"> Payment</button> </Link>
     <Divider/>
+    <Link to={`${url}/myorders`}> <button className="dashbtn"> My Orders</button> </Link>
+    <Divider/>
     <button onClick={logout} className="dashbtn"> Logout</button>
     </div>
-      {/* <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List> */}
     </div>
   );
 
@@ -163,6 +145,9 @@ function Dashboard(props) {
         </Route>
         <Route path={`${path}/payment`}>
          <Payment></Payment>
+        </Route>
+        <Route path={`${path}/myorders`}>
+         <MyOrders></MyOrders>
         </Route>
       </Switch>
    

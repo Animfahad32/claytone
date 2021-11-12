@@ -48,7 +48,7 @@ const ManageAllProducts = () => {
     }
     return (
         <div>
-            <h2>Manage All Products</h2>
+            <h2 className="text-center">Manage All Products</h2>
 
             <div className="container-fluid mt-5">
            <div className="table-responsive">

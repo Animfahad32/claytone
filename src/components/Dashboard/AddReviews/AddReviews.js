@@ -27,7 +27,7 @@ const AddReviews = () => {
            <form onSubmit={handleSubmit(onSubmit)}>
             <input defaultValue={user?.displayName}  className="form-div-input " {...register("name", { required: true, maxLength: 20 })} placeholder="Your Name" />
             <input  className="form-div-input " {...register("text")} placeholder="Say About Us" />
-            <input  className="form-div-input " {...register("rating")} placeholder="Rating between 0 to 6" type="number" />
+            <input  className="form-div-input " {...register("rating")} placeholder="Rating between 0 to 5" type="number" />
             
             <input className="form-btn" type="submit" />
             </form>

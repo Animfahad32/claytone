@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import useAuth from '../../../hooks/useAuth';
 
-const AllOrders = () => {
+const MyOrders = () => {
+    const [myOrders, setMyorders ] = useState([])
+    const {user} = useAuth()
 
-    const [orders, setOrders] = useState([])
-
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/orders')
         .then(response => response.json())
-        .then(data => setOrders(data) )
+        .then(data => setMyorders(data))
     },[])
+
+    const exactOrders = myOrders.filter(td=> td.email===user?.email)
+    console.log(exactOrders)
+
     const handleConfirm = (id) => {
         swal({
-            title: "Are you sure you want to delete?",
+            title: "Are you sure you want to cancel the order?",
             icon: "warning",
-            buttons: true,
+             buttons: true,
             dangerMode: true,
           })
           .then((willDelete) => {
@@ -27,8 +32,8 @@ const AllOrders = () => {
                     .then(res=>res.json())
                     .then(data => {
                         console.log(data)
-                        const remaining = orders.filter(allorders => allorders._id !==id )
-                        setOrders(remaining)
+                        const remaining = myOrders.filter(myOrder => myOrder._id !==id )
+                        setMyorders(remaining)
             
                       
                      
@@ -36,7 +41,7 @@ const AllOrders = () => {
                 }
 
                 handleDelete(id)
-                swal("You deleted the order", {
+                swal("You canceled the order", {
                 icon: "success",
               });
            
@@ -46,10 +51,13 @@ const AllOrders = () => {
           
           });
     }
+
+
     return (
         <div>
-             <h2 className="text-center">Manage All Orders</h2>
-             <div className="container-fluid mt-5">
+            <h2>MyOrders</h2>
+
+            <div className="container-fluid mt-5">
            <div className="table-responsive">
                         <table className="table table-bordered table-hover">
                             <thead className="thead-style">
@@ -62,24 +70,28 @@ const AllOrders = () => {
                                 <th scope="col" className="text-center">Action</th>
                                 </tr>
                             </thead>
-                            {
-                orders.map(order =>
-                    <tbody
-                    key = {order?._id}
+                            <tbody
+                  
                     className="tbody-style"
                     >
-                                <tr>
-                                <th scope="row" className="text-center">{order?._id}</th>
-                                <td className="text-center">{order?.name}</td>
-                                <td className="text-center">{order?.email}</td>
-                                <td className="text-center">{order?.phoneNumber}</td>
-                                <td className="text-center">{order?.address}</td>
-                                <td className="text-center"> <button onClick= {()=> handleConfirm(order?._id)} className="allproduct-btn">Delete</button> </td>
+                            {
+                exactOrders.map(exactOrder =>
+                 
+                                <tr
+                                key = {exactOrder?._id}>
+                                <th scope="row" className="text-center">{exactOrder?._id}</th>
+                                <td className="text-center">{exactOrder?.name}</td>
+                                <td className="text-center">{exactOrder?.email}</td>
+                                <td className="text-center">{exactOrder?.phoneNumber}</td>
+                                <td >{exactOrder?.address}</td>
+                                <td className="text-center"> <button onClick= {()=> handleConfirm(exactOrder?._id)} className="allproduct-btn">Delete</button> </td>
+                               
                                 
                                 </tr>
                                 
-                            </tbody>
+                           
                 )}
+                </tbody>
                             </table>
                     </div>
            </div>
@@ -87,4 +99,4 @@ const AllOrders = () => {
     );
 };
 
-export default AllOrders;
+export default MyOrders;

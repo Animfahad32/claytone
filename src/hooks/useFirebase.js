@@ -70,7 +70,7 @@ useEffect(()=>{
   });
 
   return () => unsubscribed;
-},[])
+},[auth])
 
 
 

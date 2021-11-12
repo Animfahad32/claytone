@@ -65,12 +65,12 @@ const Register = () => {
             </div>
             </div>}
             {user?.email && <div className="container mt-3">
-            <div class="alert alert-clr" role="alert">
+            <div className="alert alert-clr" role="alert">
                 Account Created Successfully!
                 </div>
             </div> }
             {authError && <div className="container mt-3">
-            <div class="alert alert-clr" role="alert">
+            <div className="alert alert-clr" role="alert">
                 {authError}
                 </div>
             </div>  }

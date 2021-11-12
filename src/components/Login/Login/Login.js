@@ -54,7 +54,7 @@ const Login = () => {
             </div>
             </div>}
             {authError && <div className="container mt-3">
-            <div class="alert alert-clr" role="alert">
+            <div className="alert alert-clr" role="alert">
                 {authError}
                 </div>
             </div>  }

@@ -1,4 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
+import { Divider } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,17 +10,23 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import {
-    Link, Route, Switch, useRouteMatch
+  Link, Route, Switch, useRouteMatch
 } from "react-router-dom";
+import useAuth from '../../../hooks/useAuth';
 import logo from '../../../images/logo.png';
 import AddProducts from '../AddProducts/AddProducts';
 import AddReviews from '../AddReviews/AddReviews';
+import AllOrders from '../AllOrders/AllOrders';
+import ManageAllProducts from '../ManageAllProducts/ManageAllProducts';
+import Payment from '../Payment/Payment';
 import './Dashboard.css';
 
 
 const drawerWidth = 220;
 
+
 function Dashboard(props) {
+  const {logout} = useAuth()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
@@ -36,9 +43,19 @@ function Dashboard(props) {
       </Link>
       
     <div className="mt-5">
-    <Link to={`${url}/addproducts`}> <button className="allproduct-btn">Add Products</button> </Link>
-    <Link to={`${url}/makeadmin`}> <button className="allproduct-btn">Make Admin</button> </Link>
-    <Link to={`${url}/reviews`}> <button className="allproduct-btn">Add Reviews</button> </Link>
+    <Link to={`${url}/addproducts`}> <button className="dashbtn">Add Products</button> </Link>
+    <Divider/>
+    <Link to={`${url}/makeadmin`}> <button className="dashbtn">Make Admin</button> </Link>
+    <Divider/>
+    <Link to={`${url}/reviews`}> <button className="dashbtn">Add Reviews</button> </Link>
+    <Divider/>
+    <Link to={`${url}/manageallproducts`}> <button className="dashbtn">Manage All Products</button> </Link>
+    <Divider/>
+    <Link to={`${url}/allorders`}> <button className="dashbtn"> Manange All Orders</button> </Link>
+    <Divider/>
+    <Link to={`${url}/payment`}> <button className="dashbtn"> Payment</button> </Link>
+    <Divider/>
+    <button onClick={logout} className="dashbtn"> Logout</button>
     </div>
       {/* <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -137,6 +154,15 @@ function Dashboard(props) {
         </Route>
         <Route path={`${path}/reviews`}>
          <AddReviews></AddReviews>
+        </Route>
+        <Route path={`${path}/manageallproducts`}>
+         <ManageAllProducts></ManageAllProducts>
+        </Route>
+        <Route path={`${path}/allorders`}>
+         <AllOrders></AllOrders>
+        </Route>
+        <Route path={`${path}/payment`}>
+         <Payment></Payment>
         </Route>
       </Switch>
    

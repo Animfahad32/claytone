@@ -5,3 +5,17 @@
 .css-w6ahim-MuiPaper-root-MuiAppBar-root {
   box-shadow: none !important;
 }
+.dashbtn {
+  width: 100%;
+  padding: 12px 35px;
+  font-weight: 600;
+  background-color: #ffe9e3;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: #333333;
+}
+.dashbtn:hover {
+  background-color: #333333;
+  transition: all 0.3s;
+  color: #ffe9e3;
+}

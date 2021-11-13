@@ -29,8 +29,9 @@ const Navigation = () => {
                      user?.email ?
                        
                    <div className="logs-style">
-                       <button onClick={logout} className="logoutbtn">Log out </button>
                        <Nav.Link as={HashLink} to="/dashboard" className="nav-hov">Dashboard</Nav.Link>
+                       <button onClick={logout} className="logoutbtn">Log out </button>
+                       
                    </div>  :
                    <div className="logs-style">
                    <Nav.Link as={HashLink} to="/login" className="nav-hov">Login</Nav.Link>

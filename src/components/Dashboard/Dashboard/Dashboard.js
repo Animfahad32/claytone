@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../images/logo.png';
+import AdminRoute from '../../Login/AdminRoute/AdminRoute';
 import AddProducts from '../AddProducts/AddProducts';
 import AddReviews from '../AddReviews/AddReviews';
 import AllOrders from '../AllOrders/AllOrders';
@@ -28,7 +29,7 @@ const drawerWidth = 220;
 
 
 function Dashboard(props) {
-  const {logout, user} = useAuth()
+  const {logout, user,admin} = useAuth()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
@@ -45,20 +46,31 @@ function Dashboard(props) {
       </Link>
       
     <div className="mt-5">
-    <Link to={`${url}/addproducts`}> <button className="dashbtn">Add Products</button> </Link>
+
+    {admin ? <div>
+      <Link to={`${url}/addproducts`}> <button className="dashbtn">Add Products</button> </Link>
     <Divider/>
     <Link to={`${url}/makeadmin`}> <button className="dashbtn">Make Admin</button> </Link>
-    <Divider/>
-    <Link to={`${url}/reviews`}> <button className="dashbtn">Add Reviews</button> </Link>
+  
     <Divider/>
     <Link to={`${url}/manageallproducts`}> <button className="dashbtn">Manage All Products</button> </Link>
     <Divider/>
     <Link to={`${url}/allorders`}> <button className="dashbtn"> Manange All Orders</button> </Link>
-    <Divider/>
-    <Link to={`${url}/payment`}> <button className="dashbtn"> Payment</button> </Link>
+    </div> :
+    <div>
+      <Link to={`${url}/payment`}> <button className="dashbtn"> Payment</button> </Link>
     <Divider/>
     <Link to={`${url}/myorders`}> <button className="dashbtn"> My Orders</button> </Link>
     <Divider/>
+    <Link to={`${url}/reviews`}> <button className="dashbtn">Add Reviews</button> </Link>
+    <Divider/>
+    </div>
+    
+    }
+
+    
+    <Divider/>
+    
     <button onClick={logout} className="dashbtn"> Logout</button>
     </div>
     </div>
@@ -137,27 +149,27 @@ function Dashboard(props) {
 
         </div>
         </Route>
-        <Route path={`${path}/addproducts`}>
+        <AdminRoute path={`${path}/addproducts`}>
          <AddProducts></AddProducts>
-        </Route>
+        </AdminRoute>
         <Route path={`${path}/reviews`}>
          <AddReviews></AddReviews>
         </Route>
-        <Route path={`${path}/manageallproducts`}>
+        <AdminRoute path={`${path}/manageallproducts`}>
          <ManageAllProducts></ManageAllProducts>
-        </Route>
-        <Route path={`${path}/allorders`}>
+        </AdminRoute>
+        <AdminRoute path={`${path}/allorders`}>
          <AllOrders></AllOrders>
-        </Route>
+        </AdminRoute>
         <Route path={`${path}/payment`}>
          <Payment></Payment>
         </Route>
         <Route path={`${path}/myorders`}>
          <MyOrders></MyOrders>
         </Route>
-        <Route path={`${path}/makeadmin`}>
+        <AdminRoute path={`${path}/makeadmin`}>
          <MakeAdmin></MakeAdmin>
-        </Route>
+        </AdminRoute>
       </Switch>
    
       </Box>

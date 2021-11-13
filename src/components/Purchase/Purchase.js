@@ -15,7 +15,7 @@ const Purchase = () => {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/products/${productid}`)
+        fetch(`https://radiant-oasis-03491.herokuapp.com/products/${productid}`)
         .then(response => response.json())
         .then(data => setData(data))
     },[])
@@ -29,7 +29,7 @@ const Purchase = () => {
 
       const onSubmit = data => {
           console.log(data)
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://radiant-oasis-03491.herokuapp.com/orders', data)
         .then(res => {
             if(res.data.insertedId){
                 swal(`Hey There ${user?.displayName} Thanks for the order!`, "Order received Succesfully", "success");

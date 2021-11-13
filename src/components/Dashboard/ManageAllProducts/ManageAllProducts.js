@@ -5,7 +5,7 @@ const ManageAllProducts = () => {
     const [manageProducts, setManageProducts] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://radiant-oasis-03491.herokuapp.com/products')
         .then(response => response.json())
         .then(data => setManageProducts(data))
     },[])
@@ -20,7 +20,7 @@ const ManageAllProducts = () => {
           .then((willDelete) => {
             if (willDelete) {
                 const handleDelete = (id) => {
-                    const url = `http://localhost:5000/products/${id}`
+                    const url = `https://radiant-oasis-03491.herokuapp.com/products/${id}`
                     fetch(url, { 
                         method: 'DELETE'
                     })

@@ -81,7 +81,7 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  fetch(`http://localhost:5000/users/${user?.email}`)
+  fetch(`https://radiant-oasis-03491.herokuapp.com/users/${user?.email}`)
   .then(response => response.json())
   .then(data => setAdmin(data.admin))
  
@@ -97,7 +97,7 @@ useEffect(()=>{
  }
  const saveUserInfo = (email, displayName) => {
   const user ={email, displayName};
-  fetch('http://localhost:5000/users', {
+  fetch('https://radiant-oasis-03491.herokuapp.com/users', {
     method: 'POST',
     headers: { 
       'content-type' : 'application/json'

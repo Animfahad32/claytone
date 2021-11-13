@@ -6,7 +6,7 @@ const AllOrders = () => {
     const [orders, setOrders] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/orders')
+        fetch('https://radiant-oasis-03491.herokuapp.com/orders')
         .then(response => response.json())
         .then(data => setOrders(data) )
     },[])
@@ -20,7 +20,7 @@ const AllOrders = () => {
           .then((willDelete) => {
             if (willDelete) {
                 const handleDelete = (id) => {
-                    const url = `http://localhost:5000/orders/${id}`
+                    const url = `https://radiant-oasis-03491.herokuapp.com/orders/${id}`
                     fetch(url, { 
                         method: 'DELETE'
                     })

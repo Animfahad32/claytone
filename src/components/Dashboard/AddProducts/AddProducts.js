@@ -10,7 +10,7 @@ const AddProducts = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         
-        axios.post('http://localhost:5000/products', data)
+        axios.post('https://radiant-oasis-03491.herokuapp.com/products', data)
         .then(res => {
             if(res.data.insertedId){
                 swal(`Hey There ${user?.displayName} Thanks for adding a product`, "Added Successfully", "success");

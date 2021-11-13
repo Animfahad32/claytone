@@ -9,7 +9,7 @@ const AddReviews = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         
-        axios.post('http://localhost:5000/addreviews', data)
+        axios.post('https://radiant-oasis-03491.herokuapp.com/addreviews', data)
         .then(res => {
             if(res.data.insertedId){
                 swal(`Hey There ${user?.displayName} Thanks for giving an honest review`, "Added Successfully", "success");

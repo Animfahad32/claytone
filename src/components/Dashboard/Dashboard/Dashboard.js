@@ -17,6 +17,7 @@ import logo from '../../../images/logo.png';
 import AddProducts from '../AddProducts/AddProducts';
 import AddReviews from '../AddReviews/AddReviews';
 import AllOrders from '../AllOrders/AllOrders';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageAllProducts from '../ManageAllProducts/ManageAllProducts';
 import MyOrders from '../MyOrders/MyOrders';
 import Payment from '../Payment/Payment';
@@ -27,7 +28,7 @@ const drawerWidth = 220;
 
 
 function Dashboard(props) {
-  const {logout} = useAuth()
+  const {logout, user} = useAuth()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
@@ -86,7 +87,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" >
-            Dashboard
+            {user?.displayName}&#39;s Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -129,7 +130,12 @@ function Dashboard(props) {
         <Toolbar />
         <Switch>
         <Route exact path={path}>
-          <h3>Please select a topic.</h3>
+        <div className="bg-clr p-1">
+             <div className="container p-5">
+                <h1 className="notfound">Hey {user?.displayName} ! Welcome To Your Dashboard</h1>
+            </div>
+
+        </div>
         </Route>
         <Route path={`${path}/addproducts`}>
          <AddProducts></AddProducts>
@@ -148,6 +154,9 @@ function Dashboard(props) {
         </Route>
         <Route path={`${path}/myorders`}>
          <MyOrders></MyOrders>
+        </Route>
+        <Route path={`${path}/makeadmin`}>
+         <MakeAdmin></MakeAdmin>
         </Route>
       </Switch>
    

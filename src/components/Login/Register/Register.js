@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 import useAuth from '../../../hooks/useAuth';
 import Footer from '../../Footer/Footer';
 import Navigation from '../../Navigation/Navigation';
@@ -26,13 +26,15 @@ const Register = () => {
     }
     const handleLogin = e => {
         if(loginData.password !== loginData.password2 ){
-            Swal.fire({
+            swal({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Password didn\'t match',
-                
+                timer: 70000
               })
            
+            
+              return
         }
         registerUser(loginData.email, loginData.password, loginData.name, history)
         e.preventDefault();

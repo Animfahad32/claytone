@@ -1,10 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
-    const {user} = useAuth()
     // const [email, setEmail] = useState('')
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {

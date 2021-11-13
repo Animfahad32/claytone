@@ -84,6 +84,7 @@ useEffect(()=>{
   fetch(`http://localhost:5000/users/${user?.email}`)
   .then(response => response.json())
   .then(data => setAdmin(data.admin))
+ 
 
 },[user.email])
  const logout = () => {

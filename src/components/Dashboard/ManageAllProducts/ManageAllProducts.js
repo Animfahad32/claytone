@@ -5,7 +5,7 @@ const ManageAllProducts = () => {
   const [manageProducts, setManageProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://claytone-server.vercel.app/products")
+    fetch("https://claytone-server.onrender.com/products")
       .then((response) => response.json())
       .then((data) => setManageProducts(data));
   }, []);
@@ -19,7 +19,7 @@ const ManageAllProducts = () => {
     }).then((willDelete) => {
       if (willDelete) {
         const handleDelete = (id) => {
-          const url = `https://claytone-server.vercel.app/products/${id}`;
+          const url = `https://claytone-server.onrender.com/products/${id}`;
           fetch(url, {
             method: "DELETE",
           })

@@ -9,7 +9,7 @@ const AddReviews = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("https://claytone-server.vercel.app/addreviews", data)
+      .post("https://claytone-server.onrender.com/addreviews", data)
       .then((res) => {
         if (res.data.insertedId) {
           swal(

@@ -8,7 +8,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://claytone-server.vercel.app/addreviews")
+    fetch("https://claytone-server.onrender.com/addreviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

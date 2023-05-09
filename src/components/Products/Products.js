@@ -5,7 +5,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://claytone-server.vercel.app/products")
+    fetch("https://claytone-server.onrender.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

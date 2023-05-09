@@ -5,7 +5,7 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://claytone-server.vercel.app/orders")
+    fetch("https://claytone-server.onrender.com/orders")
       .then((response) => response.json())
       .then((data) => setOrders(data));
   }, []);
@@ -18,7 +18,7 @@ const AllOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         const handleDelete = (id) => {
-          const url = `https://claytone-server.vercel.app/orders/${id}`;
+          const url = `https://claytone-server.onrender.com/orders/${id}`;
           fetch(url, {
             method: "DELETE",
           })

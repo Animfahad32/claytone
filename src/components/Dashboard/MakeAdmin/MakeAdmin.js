@@ -6,7 +6,7 @@ const MakeAdmin = () => {
   // const [email, setEmail] = useState('')
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    fetch("https://claytone-server.vercel.app/users/admin", {
+    fetch("https://claytone-server.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

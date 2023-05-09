@@ -7,7 +7,7 @@ const MyOrders = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://claytone-server.vercel.app/orders")
+    fetch("https://claytone-server.onrender.com/orders")
       .then((response) => response.json())
       .then((data) => setMyorders(data));
   }, []);
@@ -24,7 +24,7 @@ const MyOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         const handleDelete = (id) => {
-          const url = `https://claytone-server.vercel.app/orders/${id}`;
+          const url = `https://claytone-server.onrender.com/orders/${id}`;
           fetch(url, {
             method: "DELETE",
           })

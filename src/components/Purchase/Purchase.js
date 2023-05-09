@@ -13,7 +13,7 @@ const Purchase = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`https://claytone-server.vercel.app/${productid}`)
+    fetch(`https://claytone-server.onrender.com/${productid}`)
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
@@ -26,7 +26,7 @@ const Purchase = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post("https://claytone-server.vercel.app/orders", data)
+      .post("https://claytone-server.onrender.com/orders", data)
       .then((res) => {
         if (res.data.insertedId) {
           swal(

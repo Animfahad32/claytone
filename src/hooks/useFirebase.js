@@ -76,7 +76,7 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://claytone-server.vercel.app/users/${user?.email}`)
+    fetch(`https://claytone-server.onrender.com/users/${user?.email}`)
       .then((response) => response.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -92,7 +92,7 @@ const useFirebase = () => {
   };
   const saveUserInfo = (email, displayName) => {
     const user = { email, displayName };
-    fetch("https://claytone-server.vercel.app/users", {
+    fetch("https://claytone-server.onrender.com/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
